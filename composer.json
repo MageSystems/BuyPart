@@ -1,0 +1,21 @@
+{
+    "name": "magesystems/module-buypart",
+    "description": "Allows you to order a specific product in the cart ",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MageSystems",
+            "email": "softwaremagesystems@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MageSystems\\OrderSpecificProduct\\": ""
+        }
+    }
+}

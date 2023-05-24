@@ -19,7 +19,7 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
 <tbody class="cart item">
 <tr class="item-info">
     <td data-th="<?= $block->escapeHtml(__('Item')) ?>" class="col item">
-        <input type="checkbox" name="selected_items[]" value="<?= $_item->getId() ?>" checked />
+        <input type="checkbox" name="selected_items[]" value="<?= $product->getId() ?>" checked data-mage-init='{"selected-products":{}}' />
         <?php if ($block->hasProductUrl()): ?>
         <a href="<?= $block->escapeUrl($block->getProductUrl()) ?>"
            title="<?= $block->escapeHtml($block->getProductName()) ?>"

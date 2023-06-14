@@ -1,12 +1,4 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
-// phpcs:disable Magento2.Templates.ThisInTemplate
-// phpcs:disable Generic.Files.LineLength
-
 /** @var $block \Magento\Checkout\Block\Cart\Item\Renderer */
 
 $_item = $block->getItem();
@@ -15,11 +7,16 @@ $isVisibleProduct = $product->isVisibleInSiteVisibility();
 /** @var \Magento\Msrp\Helper\Data $helper */
 $helper = $this->helper(Magento\Msrp\Helper\Data::class);
 $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinimalPriceLessMsrp($product);
+$quoteId = $_item->getItemId();
+if($children = $_item->getChildren()){
+    $quoteId .= ','.$children[0]->getItemId();
+}
+
 ?>
 <tbody class="cart item">
 <tr class="item-info">
     <td data-th="<?= $block->escapeHtml(__('Item')) ?>" class="col item">
-        <input type="checkbox" name="selected_items[]" value="<?= $product->getId() ?>" checked data-mage-init='{"selected-products":{}}' />
+        <input type="checkbox" name="selected_items[]" class="ms-selected-items" value="<?= $quoteId ?>" checked data-mage-init='{"selected-products":{}}' />
         <?php if ($block->hasProductUrl()): ?>
         <a href="<?= $block->escapeUrl($block->getProductUrl()) ?>"
            title="<?= $block->escapeHtml($block->getProductName()) ?>"

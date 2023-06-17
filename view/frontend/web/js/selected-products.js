@@ -1,8 +1,8 @@
-define(['jquery', 'Magento_Checkout/js/action/get-totals'], function($, getTotalsAction){
+define(['jquery', 'Magento_Checkout/js/model/quote'], function($, quote){
     return function(config, element){
         $.ajaxSetup({
             beforeSend: function(jqXHR, settings) {
-                if(settings.url.indexOf('carts/mine/totals') !== -1 && settings.type === 'GET'){
+                if(settings.url.indexOf('carts/mine/totals-information') !== -1 && settings.type === 'POST'){
                     let params = getQuoteItemsIds();
                     let separator = getSeparator(settings.url);
 
@@ -12,8 +12,7 @@ define(['jquery', 'Magento_Checkout/js/action/get-totals'], function($, getTotal
         });
 
         $(element).on('change', function(){
-            let deferred = $.Deferred();
-            getTotalsAction([], deferred);
+            quote.shippingAddress(quote.shippingAddress());
         });
 
         function getQuoteItemsIds()

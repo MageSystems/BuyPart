@@ -4,4 +4,7 @@
     <type name="Magento\Quote\Model\ResourceModel\Quote\Item\Collection">
         <plugin name="ms_change_quote_items_collection" type="MageSystems\BuyPart\Plugin\ChangeQuoteItemCollection" />
     </type>
+    <type name="Magento\Checkout\Model\TotalsInformationManagement">
+        <plugin name="ms_save_checkbox_state" type="MageSystems\BuyPart\Plugin\SaveCheckboxState" />
+    </type>
 </config>

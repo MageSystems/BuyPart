@@ -1,8 +1,7 @@
 <?php
 /**
- * @package Vinduesgrossisten
- * @author    artsem.belvg@gmail.com
- * @copyraight Copyright © 2015 - 2024
+ * @package BuyLater
+ * @author   artsem.miklashevich@gmail.com
  */
 declare(strict_types=1);
 

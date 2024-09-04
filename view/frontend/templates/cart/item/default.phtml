@@ -16,7 +16,14 @@ if($children = $_item->getChildren()){
 <tbody class="cart item">
 <tr class="item-info">
     <td data-th="<?= $block->escapeHtml(__('Item')) ?>" class="col item">
-        <input type="checkbox" name="selected_items[]" class="ms-selected-items" value="<?= $quoteId ?>" checked data-mage-init='{"selected-products":{}}' />
+        <input
+            type="checkbox"
+            name="<?= \sprintf('%s[]', \MageSystems\BuyPart\Model\CheckBoxState::PARAM_NAME) ?>"
+            class="ms-selected-items"
+            value="<?= $quoteId ?>"
+            <?= $_item->getData(\MageSystems\BuyPart\Model\CheckBoxState::FIELD_NAME) == 1 ? 'checked' : '' ?>
+            data-mage-init='{"selected-products":{}}'
+        />
         <?php if ($block->hasProductUrl()): ?>
         <a href="<?= $block->escapeUrl($block->getProductUrl()) ?>"
            title="<?= $block->escapeHtml($block->getProductName()) ?>"

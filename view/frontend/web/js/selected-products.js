@@ -2,7 +2,7 @@ define(['jquery', 'Magento_Checkout/js/model/quote'], function($, quote){
     return function(config, element){
         $.ajaxSetup({
             beforeSend: function(jqXHR, settings) {
-                if(settings.url.indexOf('carts/mine/totals-information') !== -1 && settings.type === 'POST'){
+                if(allowUrls(settings) && settings.type === 'POST'){
                     let params = getQuoteItemsIds();
                     let separator = getSeparator(settings.url);
 
@@ -33,6 +33,12 @@ define(['jquery', 'Magento_Checkout/js/model/quote'], function($, quote){
             }
 
             return separator;
+        }
+
+        function allowUrls(settings)
+        {
+            return  settings.url.indexOf('carts/mine/totals-information') !== -1 ||
+                    settings.url.indexOf('guest-carts') !== -1;
         }
     };
 });
